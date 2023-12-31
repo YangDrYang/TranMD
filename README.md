@@ -13,25 +13,26 @@ Our work has been discussed in the PodBean podcast! [See here](https://papersrea
 ## Installation
 This code needs Python-3.7 or higher.
 ```bash
-pip3 install torch==1.8.1+cpu torchvision==0.9.1+cpu torchaudio===0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
+pip3 install torch==1.13.0 torchvision==0.12.0 torchaudio===0.11.0 -f https://download.pytorch.org/whl/cpu/torch_stable.html
+# pip3 install torch==1.8.1+cpu torchvision==0.9.1+cpu torchaudio===0.8.1 -f https://download.pytorch.org/whl/torch_stable.html
 pip3 install -r requirements.txt
 ```
 
 ## Dataset Preprocessing
 Preprocess all datasets using the command
 ```bash
-python3 preprocess.py SMAP MSL SWaT WADI SMD MSDS UCR MBA NAB
+python3.10 preprocess.py SMAP MSL 
 ```
 Distribution rights to some datasets may not be available. Check the readme files in the `./data/` folder for more details. If you want to ignore a dataset, remove it from the above command to ensure that the preprocessing does not fail.
 
 ## Result Reproduction
 To run a model on a dataset, run the following command:
 ```bash
-python3 main.py --model <model> --dataset <dataset> --retrain
+python3.10 main.py --model <model> --dataset <dataset> --retrain
 ```
 where `<model>` can be either of 'TranAD', 'GDN', 'MAD_GAN', 'MTAD_GAT', 'MSCRED', 'USAD', 'OmniAnomaly', 'LSTM_AD', and dataset can be one of 'SMAP', 'MSL', 'SWaT', 'WADI', 'SMD', 'MSDS', 'MBA', 'UCR' and 'NAB. To train with 20% data, use the following command 
 ```bash
-python3 main.py --model <model> --dataset <dataset> --retrain --less
+python3.10 main.py --model <model> --dataset <dataset> --retrain --less
 ```
 You can use the parameters in `src/params.json` to set values in `src/constants.py` for each file. 
 
